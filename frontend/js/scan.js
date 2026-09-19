@@ -2,7 +2,7 @@
    FITMIND AI — LIVE BODY SCAN
 ============================================================ */
 
-const API_BASE = 'http://localhost:4000';
+const API_BASE = window.FITMIND_API || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:4000' : '');
 
 
 let video;

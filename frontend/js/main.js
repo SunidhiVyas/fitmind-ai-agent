@@ -3,7 +3,7 @@
    Change API_BASE if your backend runs somewhere other than
    localhost:4000 (e.g. after deploying it).
 ============================================================ */
-const API_BASE = window.FITMIND_API || 'http://localhost:4000';
+const API_BASE = window.FITMIND_API || (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? 'http://localhost:4000' : '');
 let BACKEND_UP = true;
 
 async function apiGet(path) {
