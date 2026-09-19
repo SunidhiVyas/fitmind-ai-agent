@@ -17,7 +17,17 @@ function loadStore() {
   try {
     return JSON.parse(fs.readFileSync(STORE_PATH, 'utf8'));
   } catch (err) {
+    // Vercel serverless has read-only FS — keep in-memory default
     return { totalScans: 0, totalSessions: 0, createdAt: new Date().toISOString(), scanLog: [], latestScan: null };
+  }
+}
+function saveStore(store) {
+  try {
+    // ensure dir exists (local dev); on Vercel this will throw and be ignored
+    fs.mkdirSync(path.dirname(STORE_PATH), { recursive: true });
+    fs.writeFileSync(STORE_PATH, JSON.stringify(store, null, 2));
+  } catch (err) {
+    // Vercel ephemeral FS is read-only — keep in-memory only
   }
 }
 function ensureStoreShape(s){
