@@ -1,0 +1,15 @@
+{
+  "name": "fitmind-backend",
+  "version": "1.0.0",
+  "description": "FitMind AI backend — vitals, muscle activation, coach decisions, scan analytics",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

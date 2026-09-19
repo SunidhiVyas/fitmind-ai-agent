@@ -1,0 +1,8 @@
+# The agent runs on Python's standard library alone — no pip installs needed
+# for the default (HTTP) transport. Ollama is the only real requirement.
+#
+# Optional: install these ONLY if you want the autogen transport used by the
+# original 09-ai-medical-imaging-agent project:
+#
+# autogen-core>=0.4.0
+# autogen-ext[ollama]>=0.4.0

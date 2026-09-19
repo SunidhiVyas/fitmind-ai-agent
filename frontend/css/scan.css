@@ -1,0 +1,1094 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(25, 90, 120, 0.22),
+            transparent 38%
+        ),
+        #050914;
+
+    color: #ffffff;
+
+    font-family:
+        Inter,
+        Arial,
+        sans-serif;
+}
+
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.scan-header {
+
+    height: 76px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        0 42px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(4,9,20,.85);
+
+    backdrop-filter:
+        blur(18px);
+
+}
+
+
+.scan-logo {
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    letter-spacing: .08em;
+
+}
+
+
+.scan-logo span {
+
+    color: #59e7ff;
+
+}
+
+
+.scan-logo em {
+
+    color: #9c7cff;
+
+    font-style: normal;
+
+    font-size: 12px;
+
+    margin-left: 4px;
+
+}
+
+
+.back-button {
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: #ffffff;
+
+    border-radius: 10px;
+
+    padding:
+        10px 18px;
+
+    cursor: pointer;
+
+}
+
+
+.back-button:hover {
+
+    border-color:
+        rgba(89,231,255,.5);
+
+}
+
+
+/* ============================================================
+   PAGE
+============================================================ */
+
+.scan-page {
+
+    width:
+        min(1180px, 94%);
+
+    margin:
+        0 auto;
+
+    padding:
+        60px 0 100px;
+
+}
+
+
+.scan-intro {
+
+    text-align: center;
+
+    margin-bottom: 34px;
+
+}
+
+
+.eyebrow {
+
+    color: #59e7ff;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+}
+
+
+.scan-intro h1 {
+
+    margin:
+        12px 0;
+
+    font-size:
+        clamp(42px, 6vw, 72px);
+
+    line-height: 1;
+
+}
+
+
+.scan-intro h1 span {
+
+    color: #59e7ff;
+
+}
+
+
+.scan-intro p {
+
+    max-width: 650px;
+
+    margin:
+        18px auto 0;
+
+    color: #8794b1;
+
+    line-height: 1.7;
+
+}
+
+
+/* ============================================================
+   SCANNER
+============================================================ */
+
+.scanner {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 920px;
+
+    height: 620px;
+
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(89,231,255,.22);
+
+    border-radius: 28px;
+
+    background: #02050b;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.45);
+
+}
+
+
+#video {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    transform:
+        scaleX(-1);
+
+}
+
+
+#output {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    transform:
+        scaleX(-1);
+
+    pointer-events: none;
+
+}
+
+
+.scanner-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+/* ============================================================
+   CORNERS
+============================================================ */
+
+.scan-corner {
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    border-color:
+        #59e7ff;
+
+    border-style: solid;
+
+}
+
+
+.top-left {
+
+    top: 25px;
+
+    left: 25px;
+
+    border-width:
+        3px 0 0 3px;
+
+}
+
+
+.top-right {
+
+    top: 25px;
+
+    right: 25px;
+
+    border-width:
+        3px 3px 0 0;
+
+}
+
+
+.bottom-left {
+
+    bottom: 25px;
+
+    left: 25px;
+
+    border-width:
+        0 0 3px 3px;
+
+}
+
+
+.bottom-right {
+
+    bottom: 25px;
+
+    right: 25px;
+
+    border-width:
+        0 3px 3px 0;
+
+}
+
+
+/* ============================================================
+   SCAN BEAM
+============================================================ */
+
+.scan-beam {
+
+    position: absolute;
+
+    left: 8%;
+
+    right: 8%;
+
+    height: 2px;
+
+    top: 15%;
+
+    background:
+        #59e7ff;
+
+    box-shadow:
+        0 0 18px
+        #59e7ff;
+
+    opacity: .7;
+
+    animation:
+        scanBeam 3s
+        linear infinite;
+
+}
+
+
+@keyframes scanBeam {
+
+    0% {
+        top: 15%;
+    }
+
+    50% {
+        top: 85%;
+    }
+
+    100% {
+        top: 15%;
+    }
+
+}
+
+
+/* ============================================================
+   BODY FRAME
+============================================================ */
+
+.body-frame {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 300px;
+
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px dashed
+        rgba(89,231,255,.45);
+
+    border-radius:
+        150px 150px 80px 80px;
+
+}
+
+
+.frame-label {
+
+    position: absolute;
+
+    top: -28px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #59e7ff;
+
+    font-size: 9px;
+
+    letter-spacing: .18em;
+
+    white-space: nowrap;
+
+}
+
+
+/* ============================================================
+   STATUS
+============================================================ */
+
+.scan-status {
+
+    position: absolute;
+
+    left: 30px;
+
+    top: 30px;
+
+    display: flex;
+
+    gap: 9px;
+
+    align-items: center;
+
+    padding:
+        9px 13px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(0,0,0,.5);
+
+    backdrop-filter:
+        blur(10px);
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
+
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #777;
+
+}
+
+
+.status-dot.active {
+
+    background: #59e7ff;
+
+    box-shadow:
+        0 0 12px
+        #59e7ff;
+
+}
+
+
+/* ============================================================
+   INSTRUCTION
+============================================================ */
+
+.scan-instruction {
+
+    position: absolute;
+
+    bottom: 92px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: max-content;
+
+    max-width: 90%;
+
+    padding:
+        10px 18px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(0,0,0,.55);
+
+    color: #d8e3f7;
+
+    font-size: 12px;
+
+}
+
+
+/* ============================================================
+   PROGRESS
+============================================================ */
+
+.scan-progress {
+
+    position: absolute;
+
+    left: 12%;
+
+    right: 12%;
+
+    bottom: 55px;
+
+    height: 4px;
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.scan-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #59e7ff,
+            #8b7cff
+        );
+
+    transition:
+        width .1s linear;
+
+}
+
+
+.scan-progress-text {
+
+    position: absolute;
+
+    bottom: 30px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 10px;
+
+    color: #a9b7d0;
+
+}
+
+
+/* ============================================================
+   LIVE METRICS
+============================================================ */
+
+.live-metrics {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+    max-width: 920px;
+
+    margin:
+        20px auto;
+
+}
+
+
+.metric-card {
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+
+.metric-card span {
+
+    display: block;
+
+    color: #75829e;
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+
+}
+
+
+.metric-card strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #59e7ff;
+
+    font-size: 30px;
+
+}
+
+
+.metric-card small {
+
+    color: #65718a;
+
+    font-size: 8px;
+
+}
+
+
+/* ============================================================
+   CONTROLS
+============================================================ */
+
+.scan-controls {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin:
+        30px 0 12px;
+
+}
+
+
+.scan-button {
+
+    border: 0;
+
+    border-radius: 12px;
+
+    padding:
+        15px 25px;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            120deg,
+            #2563eb,
+            #7c3aed,
+            #ec4899
+        );
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 40px
+        rgba(79,70,229,.3);
+
+}
+
+
+.scan-button:hover {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.scan-button:disabled {
+
+    opacity: .5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+.scan-dot {
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    margin-right: 8px;
+
+    border-radius: 50%;
+
+    background: #59e7ff;
+
+    box-shadow:
+        0 0 10px
+        #59e7ff;
+
+}
+
+
+.stop-button {
+
+    padding:
+        15px 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-radius: 12px;
+
+    color: #ffffff;
+
+    background:
+        rgba(255,255,255,.04);
+
+    cursor: pointer;
+
+}
+
+
+.scan-message {
+
+    min-height: 25px;
+
+    text-align: center;
+
+    color: #7f8ca8;
+
+    font-size: 12px;
+
+}
+
+
+/* ============================================================
+   RESULTS
+============================================================ */
+
+.scan-results {
+
+    display: none;
+
+    max-width: 920px;
+
+    margin:
+        70px auto 0;
+
+}
+
+
+.scan-results.visible {
+
+    display: block;
+
+}
+
+
+.results-header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+
+.results-header h2 {
+
+    margin:
+        10px 0;
+
+    font-size: 40px;
+
+}
+
+
+.results-header h2 span {
+
+    color: #59e7ff;
+
+}
+
+
+.result-score-card {
+
+    text-align: center;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(89,231,255,.2);
+
+    border-radius: 24px;
+
+    background:
+        rgba(89,231,255,.04);
+
+}
+
+
+.result-score-card span {
+
+    display: block;
+
+    color: #7e8ca8;
+
+    font-size: 10px;
+
+    letter-spacing: .16em;
+
+}
+
+
+.result-score-card strong {
+
+    font-size: 80px;
+
+    color: #59e7ff;
+
+}
+
+
+.result-score-card small {
+
+    color: #71809d;
+
+}
+
+
+/* ============================================================
+   RESULT GRID
+============================================================ */
+
+.result-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 12px;
+
+    margin-top: 15px;
+
+}
+
+
+.result-card,
+.muscle-card {
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.035);
+
+}
+
+
+.result-card span,
+.muscle-card span {
+
+    display: block;
+
+    color: #71809d;
+
+    font-size: 9px;
+
+    letter-spacing: .12em;
+
+}
+
+
+.result-card strong,
+.muscle-card strong {
+
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+
+}
+
+
+/* ============================================================
+   MUSCLE
+============================================================ */
+
+.muscle-results {
+
+    margin-top: 40px;
+
+}
+
+
+.results-header.small {
+
+    text-align: left;
+
+}
+
+
+.results-header.small h3 {
+
+    margin-top: 8px;
+
+    font-size: 25px;
+
+}
+
+
+.muscle-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (
+    max-width: 800px
+) {
+
+    .scan-header {
+
+        padding:
+            0 18px;
+
+    }
+
+
+    .scan-page {
+
+        width: 94%;
+
+    }
+
+
+    .scanner {
+
+        height: 500px;
+
+    }
+
+
+    .live-metrics {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .result-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .muscle-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .body-frame {
+
+        width: 230px;
+
+        height: 400px;
+
+    }
+
+}
+
+
+@media (
+    max-width: 500px
+) {
+
+    .scan-intro h1 {
+
+        font-size: 42px;
+
+    }
+
+
+    .scanner {
+
+        height: 430px;
+
+        border-radius: 18px;
+
+    }
+
+
+    .scan-controls {
+
+        flex-direction: column;
+
+    }
+
+
+    .scan-button,
+    .stop-button {
+
+        width: 100%;
+
+    }
+
+}
